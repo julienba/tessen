@@ -1,0 +1,9 @@
+.lein-failures
+.lein-repl-history
+target/
+.Python
+/bin
+/include
+/lib
+/.vagrant
+.nrepl-port
