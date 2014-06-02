@@ -1,10 +1,12 @@
 (ns com.simple.tessen.events
-  (:require [clj-http.client :as http]))
+  (:require [cheshire.core :as json]
+            [clj-http.client :as http]))
 
 (defn all
   "Returns all events."
   [host]
-  (http/get (str host "/events")))
+  (let [url (str host "/events")]
+    (http/get url)))
 
 (defn for-client
   "Returns all events for the Sensu client CLIENT, filtering additionally
