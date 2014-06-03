@@ -9,11 +9,11 @@
 
 (defn health
   "Queries /health endpoint, which returns a plain 202 or 503 depending on the
-   health of the Sensu server. Accepts number of RabbitMQ consumers CONSUMERS 
+   health of the Sensu server. Accepts number of RabbitMQ consumers CONSUMERS
    and RabbitMQ messages MESSAGES to determine the status to return."
   [host consumers messages]
   (let [url (str host "/health")]
-    (http/get url {:query-params {"consumers" consumers 
+    (http/get url {:query-params {"consumers" consumers
                                   "messages" messages}})))
 
 (defn info
@@ -26,7 +26,7 @@
   "Dispatches the argument CMD to the correct sub-command for further
    dispatch, with additional arguments ARGS. Hits address HOST."
   [host cmd & args]
-  (case cmd 
+  (case (name cmd)
     "aggregates" (apply aggregates/dispatch host args)
     "checks" (apply checks/dispatch host args)
     "clients" (apply clients/dispatch host args)

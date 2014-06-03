@@ -11,7 +11,8 @@
 (defn by-name
   "Returns the check given by CHECK-NAME."
   [host check-name]
-  (let [url (str host "/checks/" check-name)]
+  (let [check (name check-name)
+        url (str host "/checks/" check)]
     (http/get url)))
 
 (defn request
@@ -26,7 +27,7 @@
   "Dispatches the keyword CMD to be run as an associated function call, with
    additional arguments ARGS."
   [host cmd & args]
-  (case cmd
+  (case (name cmd)
     "all" (apply all host args)
     "by-name" (apply by-name host args)
     "request" (apply request host args)
