@@ -21,22 +21,24 @@
     (http/post url {:body payload :content-type :json})))
 
 (defn by-name
-  "Retrieves the stash given by name STASH."
-  [host stash]
-  (let [url (str host "/stashes/" stash)]
+  "Retrieves the stash given by name STASH-NAME."
+  [host stash-name]
+  (let [stash (name stash-name)
+        url (str host "/stashes/" stash)]
     (http/get url)))
 
 (defn delete
-  "Deletes the stash given by name STASH."
-  [host stash]
-  (let [url (str host "/stashes/" stash)]
+  "Deletes the stash given by name STASH-NAME."
+  [host stash-name]
+  (let [stash (name stash-name)
+        url (str host "/stashes/" stash)]
     (http/delete url)))
 
 (defn dispatch
   "Dispatches the keyword CMD to be run as an associated function call, with
    additional arguments ARGS."
   [host cmd & args]
-  (case cmd
+  (case (name cmd)
     "all" (apply all host args)
     "by-name" (apply by-name host args)
     "create" (apply create host args)
