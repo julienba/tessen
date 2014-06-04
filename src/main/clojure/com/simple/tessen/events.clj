@@ -11,9 +11,10 @@
 (defn for-client
   "Returns all events for the Sensu client CLIENT-NAME, filtering additionally
    for optional check name CHECK."
-  [host client-name & {:keys [check]}]
+  [host client-name & {:keys [check] :or {check ""}}]
   (let [client (name client-name)
-        path (str client "/" check)
+        check-name (name check)
+        path (str "/events/" client "/" check-name)
         url (str host path)]
     (http/get url)))
 

@@ -16,9 +16,8 @@
    aggregates.'"
   [host aggregate-name & {:keys [age]}]
   (let [aggregate (name aggregate-name)
-        url (str host "/aggregates/" aggregate)
-        params (json/generate-string {"age" age})]
-    (http/get url {:query-params params})))
+        url (str host "/aggregates/" aggregate)]
+    (http/get url {:query-params {"age" age}})))
 
 (defn delete
   "Deletes the aggregate given by AGGREGATE-NAME."
