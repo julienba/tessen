@@ -1,5 +1,6 @@
 (ns com.simple.tessen.checks
-  (:require [cheshire.core :as json]
+  (:require [clojure.tools.logging :as log]
+            [cheshire.core :as json]
             [clj-http.client :as http]))
 
 (defn all
@@ -31,4 +32,4 @@
     "all" (apply all host args)
     "by-name" (apply by-name host args)
     "request" (apply request host args)
-    (println (format "Unknown subcommand `%s'" cmd))))
+    (log/warnf "Unknown subcommand `%s'" cmd)))

@@ -1,5 +1,6 @@
 (ns com.simple.tessen.stashes
-  (:require [clj-http.client :as http]
+  (:require [clojure.tools.logging :as log]
+            [clj-http.client :as http]
             [cheshire.core :as json]))
 
 (defn all
@@ -43,4 +44,4 @@
     "by-name" (apply by-name host args)
     "create" (apply create host args)
     "delete" (apply delete host args)
-    :default (println (format "Unknown command `%s'" cmd))))
+    (log/warnf "Unknown command `%s'" cmd)))

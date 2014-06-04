@@ -1,5 +1,6 @@
 (ns com.simple.tessen.events
-  (:require [cheshire.core :as json]
+  (:require [clojure.tools.logging :as log]
+            [cheshire.core :as json]
             [clj-http.client :as http]))
 
 (defn all
@@ -35,4 +36,4 @@
     "all" (apply all host args)
     "for-client" (apply for-client host args)
     "resolve" (apply resolve-event host args)
-    :default (println (format "Unknown command `%s'" cmd))))
+    (log/warnf "Unknown command `%s'" cmd)))
