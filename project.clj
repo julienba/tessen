@@ -7,6 +7,7 @@
   :source-paths ["src/main/clojure"]
   :test-paths ["src/test/clojure"]
   :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/tools.logging "0.2.6"]
                  [org.clojure/algo.generic "0.1.2"]
                  [cheshire "5.3.1"]
                  [clj-http "0.9.1"]]

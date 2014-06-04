@@ -4,6 +4,7 @@
             [com.simple.tessen.clients :as clients]
             [com.simple.tessen.events :as events]
             [com.simple.tessen.stashes :as stashes]
+            [clojure.tools.logging :as log]
             [clj-http.client :as http]
             [cheshire.core :as json]))
 
@@ -16,6 +17,7 @@
     (http/get url {:query-params {"consumers" consumers
                                   "messages" messages}})))
 
+;; TODO?: function to replace (str host ___)
 (defn info
   "Gets generic information about the Sensu server."
   [host]
@@ -34,4 +36,4 @@
     "health" (apply health host args)
     "info" (apply info host args)
     "stashes" (apply stashes/dispatch host args)
-    (println (format "Unknown command `%s'" cmd))))
+    (log/warnf "Unknown command `%s'" cmd)))
