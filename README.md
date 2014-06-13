@@ -2,8 +2,6 @@
 Sensu API client written in Clojure.
 
 ## Installaton
-Tessen is available via [Clojars]():
-
 `[tessen "0.1.0"]`
 
 ## Usage
