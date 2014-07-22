@@ -49,6 +49,6 @@ namespace that offers the ability to access each individual namespace as a
 Strings can be used in place of keywords.
 
 ## Author/License
-Jake Davis <jake@simple.com>
+Jake Davis <jake.davis5989@gmail.com>
 
 Apache License, Version 2.0
