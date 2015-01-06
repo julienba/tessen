@@ -1,23 +1,18 @@
 (def VERSION (.trim (slurp "VERSION")))
 
-(defproject tessen VERSION
+(defproject org.clojars.jakedavis/tessen VERSION
+  :main tessen.core
   :description "Sensu API client in Clojure."
   :url "http://github.com/jakedavis/tessen"
   :license "Apache License, Version 2.0"
-  :source-paths ["src/main/clojure"]
-  :test-paths ["src/test/clojure"]
-  :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/tools.logging "0.2.6"]
-                 [org.clojure/algo.generic "0.1.2"]
-                 [cheshire "5.3.1"]
-                 [clj-http "0.9.1"]]
-  :main com.simple.tessen.core
-  :repositories
-  [["releases"  {:url "http://nexus.banksimple.com/content/repositories/releases"
-                 :username :env/nexus_username
-                 :password :env/nexus_password
-                 :sign-releases false}]
-   ["public" "http://nexus.banksimple.com/content/groups/public"]]
-  :javac-options  ["-target" "1.7" "-source" "1.7"]
+  :repl-options {:init-ns tessen.core}
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/tools.logging "0.3.1"]
+                 [cheshire "5.4.0"]
+                 [clj-http "1.0.1"]]
   :min-lein-version "2.0.0"
-  :global-vars {*warn-on-reflection* true})
+  :global-vars {*warn-on-reflection* true}
+  :codox {:output-dir "target/doc"
+          :src-dir-url "https://github.com/jakedavis/tessen"}
+  :profiles {:dev {:plugins [[codox "0.8.10"]
+                             [lein-cloverage "1.0.2"]]}})
