@@ -1,9 +1,9 @@
-(ns com.simple.tessen.core
-  (:require [com.simple.tessen.aggregates :as aggregates]
-            [com.simple.tessen.checks :as checks]
-            [com.simple.tessen.clients :as clients]
-            [com.simple.tessen.events :as events]
-            [com.simple.tessen.stashes :as stashes]
+(ns tessen.core
+  (:require [tessen.aggregates :as aggregates]
+            [tessen.checks :as checks]
+            [tessen.clients :as clients]
+            [tessen.events :as events]
+            [tessen.stashes :as stashes]
             [clojure.tools.logging :as log]
             [clj-http.client :as http]
             [cheshire.core :as json]))
@@ -17,7 +17,6 @@
     (http/get url {:query-params {"consumers" consumers
                                   "messages" messages}})))
 
-;; TODO?: function to replace (str host ___)
 (defn info
   "Gets generic information about the Sensu server."
   [host]

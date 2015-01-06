@@ -2,7 +2,7 @@
 Sensu API client written in Clojure.
 
 ## Installaton
-`[tessen "0.1.0"]`
+`[tessen "0.2.0"]`
 
 ## Usage
 Tessen namespaces each individual Sensu API endpoint
@@ -12,7 +12,7 @@ namespace that offers the ability to access each individual namespace as a
 "subcommand":
 
 ``` clojure
-(require '(com.simple.tessen.core :as tessen))
+(require '(tessen.core :as tessen))
 (def sensu-api (partial tessen/dispatch "http://sensu.example.com:4567"))
 
 ;; General

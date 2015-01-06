@@ -1,4 +1,4 @@
-(ns com.simple.tessen.clients
+(ns tessen.clients
   (:require [clojure.tools.logging :as log]
             [cheshire.core :as json]
             [clj-http.client :as http]))
